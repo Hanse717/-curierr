@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Работа курьером — до 150 000 ₽ в месяц</title>
+  <meta name="description" content="Работа курьером по всей России. До 150 000 ₽ в месяц, гибкий график, быстрый старт и простая заявка." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+  <style>
+    :root {
+      --bg: #f4f7f7;
+      --surface: #ffffff;
+      --text: #0f1720;
+      --text-soft: #52606d;
+      --white: #ffffff;
+      --primary: #00e676;
+      --primary-dark: #00ca66;
+      --accent: #004d4d;
+      --shadow: 0 18px 50px rgba(5, 16, 24, 0.12);
+      --shadow-lg: 0 30px 90px rgba(5, 16, 24, 0.18);
+      --container: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+    }
+
+    .container--narrow {
+      width: min(100% - 32px, 860px);
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn--primary {
+      color: #06351f;
+      background: linear-gradient(135deg, var(--primary), #4dff9f);
+      box-shadow: 0 14px 34px rgba(0, 230, 118, 0.28);
+    }
+
+    .btn--primary:hover {
+      background: linear-gradient(135deg, var(--primary-dark), #43f796);
+    }
+
+    .btn--lg {
+      min-height: 62px;
+      padding: 0 34px;
+      font-size: 18px;
+    }
+
+    .btn--sm {
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 14px;
+    }
+
+    .btn--full { width: 100%; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      background: rgba(3, 20, 23, 0.58);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header__inner {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .logo__mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--primary), #7bffbc);
+      box-shadow: 0 0 20px rgba(0, 230, 118, 0.45);
+      transform: rotate(45deg);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav a {
+      color: rgba(255, 255, 255, 0.86);
+      font-weight: 600;
+    }
+
+    .nav a:hover { color: var(--white); }
+
+    .burger {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      background: transparent;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 10px;
+      transition: 0.25s ease;
+    }
+
+    .burger.is-active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger.is-active span:nth-child(2) { opacity: 0; }
+
+    .burger.is-active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 16px 20px;
+      background: rgba(3, 20, 23, 0.96);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .mobile-menu.is-open { display: block; }
+
+    .hero {
+      position: relative;
+      min-height: 860px;
+      color: var(--white);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0, 22, 24, 0.94) 0%,
+          rgba(0, 48, 48, 0.82) 32%,
+          rgba(0, 77, 77, 0.52) 52%,
+          rgba(0, 77, 77, 0.16) 75%,
+          rgba(0, 0, 0, 0.04) 100%
+        ),
+        url("hero-courier.png") center center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 28%, rgba(0, 230, 118, 0.13), transparent 30%),
+        radial-gradient(circle at 78% 28%, rgba(255, 191, 94, 0.14), transparent 24%);
+      pointer-events: none;
+    }
+
+    .hero__container {
+      position: relative;
+      z-index: 1;
+      min-height: 860px;
+      display: flex;
+      align-items: center;
+      padding-top: 130px;
+      padding-bottom: 150px;
+    }
+
+    .hero__content {
+      width: min(100%, 680px);
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0 14px;
+      margin-bottom: 22px;
+      border-radius: 999px;
+      color: #7dffc0;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(125, 255, 192, 0.2);
+      font-weight: 800;
+    }
+
+    .hero__title {
+      margin: 0 0 18px;
+      font-size: clamp(42px, 6vw, 88px);
+      line-height: 0.94;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero__subtitle {
+      margin: 0 0 32px;
+      max-width: 580px;
+      font-size: clamp(20px, 2vw, 31px);
+      line-height: 1.28;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .hero__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .hero__badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-badge__icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(0, 230, 118, 0.14);
+      font-size: 20px;
+    }
+
+    .hero-badge__title {
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .hero-badge__text {
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 14px;
+    }
+
+    .hero-panel {
+      position: relative;
+      z-index: 20;
+      padding: 0 0 72px;
+      margin-top: -70px;
+    }
+
+    .hero-panel__grid {
+      display: grid;
+      grid-template-columns: 380px 1fr 0.92fr;
+      background: var(--surface);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .apply-card {
+      padding: 34px;
+      color: var(--white);
+      background: linear-gradient(180deg, #00a989, #004d4d);
+    }
+
+    .apply-card__title,
+    .section-card__title {
+      margin: 0 0 22px;
+      font-size: 32px;
+      line-height: 1;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .apply-card__title { margin-bottom: 6px; }
+
+    .apply-card__subtitle {
+      margin: 0 0 22px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 17px;
+    }
+
+    .apply-form input,
+    .apply-form select {
+      width: 100%;
+      height: 56px;
+      padding: 0 18px;
+      margin-bottom: 12px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--text);
+    }
+
+    .apply-form input:focus,
+    .apply-form select:focus {
+      border-color: rgba(0, 230, 118, 0.9);
+      box-shadow: 0 0 0 4px rgba(0, 230, 118, 0.12);
+    }
+
+    .apply-form__notice {
+      margin: 16px 0 0;
+      font-size: 13px;
+      line-height: 1.45;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .apply-form__notice a {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .info-card {
+      padding: 36px;
+      background: var(--surface);
+    }
+
+    .info-card--steps {
+      border-left: 1px solid rgba(8, 20, 30, 0.08);
+      border-right: 1px solid rgba(8, 20, 30, 0.08);
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+    }
+
+    .step-item__num {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      font-weight: 900;
+      background: linear-gradient(135deg, #00c966, #00e676);
+      box-shadow: 0 10px 20px rgba(0, 201, 102, 0.2);
+    }
+
+    .step-item h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .step-item p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .benefits-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .benefits-list li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 16px;
+      font-size: 17px;
+    }
+
+    .benefits-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.58em;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 5px rgba(0, 230, 118, 0.1);
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section--muted {
+      background: linear-gradient(180deg, #eef4f4, #f7f9f9);
+    }
+
+    .section-head {
+      margin-bottom: 30px;
+    }
+
+    .section-head--center {
+      text-align: center;
+    }
+
+    .section-head__eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .cards-3,
+    .cards-4 {
+      display: grid;
+      gap: 22px;
+    }
+
+    .cards-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cards-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .feature-card,
+    .soft-card {
+      padding: 28px;
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(8, 20, 30, 0.06);
+    }
+
+    .feature-card__icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 18px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-size: 22px;
+      background: linear-gradient(135deg, rgba(0, 230, 118, 0.18), rgba(73, 255, 158, 0.1));
+    }
+
+    .feature-card h3,
+    .soft-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .feature-card p,
+    .soft-card p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      padding: 0 24px;
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .faq-item summary {
+      position: relative;
+      padding: 22px 42px 22px 0;
+      list-style: none;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 26px;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .faq-item[open] summary::after { content: "–"; }
+
+    .faq-item p {
+      margin: 0 0 22px;
+      color: var(--text-soft);
+    }
+
+    .footer {
+      padding: 60px 0;
+      color: rgba(255, 255, 255, 0.82);
+      background: linear-gradient(180deg, #042528, #03171a);
+    }
+
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 28px;
+    }
+
+    .footer__brand p {
+      margin: 16px 0 0;
+      max-width: 280px;
+    }
+
+    .footer__col h3 {
+      margin: 0 0 14px;
+      color: var(--white);
+      font-size: 16px;
+    }
+
+    .footer__col a {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 1180px) {
+      .hero-panel__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-card--steps {
+        border-left: 0;
+        border-right: 0;
+        border-top: 1px solid rgba(8, 20, 30, 0.08);
+        border-bottom: 1px solid rgba(8, 20, 30, 0.08);
+      }
+
+      .cards-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer__inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav,
+      .header .btn--sm {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 760px;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 22, 24, 0.9) 0%,
+            rgba(0, 48, 48, 0.76) 38%,
+            rgba(0, 77, 77, 0.48) 68%,
+            rgba(0, 77, 77, 0.22) 100%
+          ),
+          url("hero-courier.png") 82% center / cover no-repeat;
+      }
+
+      .hero__container {
+        min-height: 760px;
+        padding-top: 128px;
+        padding-bottom: 140px;
+      }
+
+      .hero__badges,
+      .cards-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 24px, var(--container));
+      }
+
+      .header__inner {
+        min-height: 74px;
+      }
+
+      .hero {
+        min-height: 700px;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 22, 24, 0.92) 0%,
+            rgba(0, 48, 48, 0.78) 42%,
+            rgba(0, 77, 77, 0.5) 72%,
+            rgba(0, 77, 77, 0.24) 100%
+          ),
+          url("hero-courier.png") 82% center / cover no-repeat;
+      }
+
+      .hero__container {
+        min-height: 700px;
+        padding-top: 108px;
+        padding-bottom: 118px;
+      }
+
+      .hero__title {
+        font-size: 40px;
+      }
+
+      .hero__subtitle {
+        margin-bottom: 24px;
+        font-size: 18px;
+      }
+
+      .hero__buttons {
+        margin-bottom: 22px;
+      }
+
+      .hero__badges {
+        gap: 10px;
+      }
+
+      .hero-badge {
+        padding: 13px;
+        border-radius: 18px;
+      }
+
+      .hero-panel {
+        margin-top: 0;
+        padding: 24px 0 54px;
+      }
+
+      .hero-panel__grid {
+        border-radius: 24px;
+      }
+
+      .apply-card,
+      .info-card {
+        padding: 22px 18px;
+      }
+
+      .apply-card__title,
+      .section-card__title {
+        font-size: 26px;
+      }
+
+      .section-card__title {
+        margin-bottom: 16px;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .mobile-carousel {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding: 2px 0 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .mobile-carousel > * {
+        flex: 0 0 86%;
+        scroll-snap-align: start;
+      }
+
+      .steps-list {
+        gap: 0;
+      }
+
+      .steps-list.mobile-carousel .step-item {
+        min-height: 150px;
+        padding: 20px;
+        border-radius: 22px;
+        background: #f4f7f7;
+        box-shadow: 0 10px 30px rgba(8, 20, 30, 0.06);
+      }
+
+      .footer__inner {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-item {
+        padding: 0 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        min-height: 680px;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(0, 22, 24, 0.94) 0%,
+            rgba(0, 48, 48, 0.8) 44%,
+            rgba(0, 77, 77, 0.52) 74%,
+            rgba(0, 77, 77, 0.28) 100%
+          ),
+          url("hero-courier.png") 82% center / cover no-repeat;
+      }
+
+      .hero__container {
+        min-height: 680px;
+        padding-top: 98px;
+        padding-bottom: 108px;
+      }
+
+      .hero__title {
+        font-size: 34px;
+      }
+
+      .btn {
+        min-height: 54px;
+      }
+
+      .mobile-carousel > * {
+        flex-basis: 88%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="На главную">
+        <span class="logo__mark"></span>
+        <span class="logo__text">COURIER</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#advantages">Почему мы</a>
+        <a href="#apply">Как это работает</a>
+        <a href="#audience">Кому подойдет</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="btn btn--primary btn--sm" href="#form">Хочу в команду</a>
+
+      <button class="burger" type="button" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu">
+      <a href="#advantages">Почему мы</a>
+      <a href="#apply">Как это работает</a>
+      <a href="#audience">Кому подойдет</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--primary btn--full" href="#form">Оставить заявку</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__container">
+        <div class="hero__content">
+          <div class="hero__eyebrow">Станьте частью команды</div>
+
+          <h1 class="hero__title">Работа курьером</h1>
+
+          <p class="hero__subtitle">
+            До 150 000 ₽ в месяц.<br />
+            Гибкий график. Работа по всей России.
+          </p>
+
+          <div class="hero__buttons">
+            <a class="btn btn--primary btn--lg" href="#form">Хочу в команду</a>
+          </div>
+
+          <div class="hero__badges">
+            <div class="hero-badge">
+              <div class="hero-badge__icon">📍</div>
+              <div>
+                <div class="hero-badge__title">По всей РФ</div>
+                <div class="hero-badge__text">Работайте в своем городе</div>
+              </div>
+            </div>
+
+            <div class="hero-badge">
+              <div class="hero-badge__icon">⏱</div>
+              <div>
+                <div class="hero-badge__title">Быстрый старт</div>
+                <div class="hero-badge__text">Начните в ближайшее время</div>
+              </div>
+            </div>
+
+            <div class="hero-badge">
+              <div class="hero-badge__icon">🗓</div>
+              <div>
+                <div class="hero-badge__title">Удобный график</div>
+                <div class="hero-badge__text">Подстройте работу под себя</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero-panel" id="apply">
+      <div class="container">
+        <div class="hero-panel__grid">
+          <div class="apply-card" id="form">
+            <h2 class="apply-card__title">Оставьте заявку</h2>
+            <p class="apply-card__subtitle">И мы свяжемся с вами</p>
+
+            <form class="apply-form" action="#" method="post">
+              <label class="sr-only" for="name">Имя</label>
+              <input id="name" type="text" name="name" placeholder="Имя" />
+
+              <label class="sr-only" for="phone">Телефон</label>
+              <input id="phone" type="tel" name="phone" placeholder="Телефон" required />
+
+              <label class="sr-only" for="city">Город</label>
+              <input id="city" type="text" name="city" placeholder="Город" required />
+
+              <label class="sr-only" for="messenger">Удобный способ связи</label>
+              <select id="messenger" name="messenger" required>
+                <option value="">Удобный способ связи</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="telegram">Telegram</option>
+                <option value="phone">Звонок</option>
+              </select>
+
+              <button class="btn btn--primary btn--full" type="submit">Отправить заявку</button>
+
+              <p class="apply-form__notice">
+                Нажимая кнопку, вы соглашаетесь с
+                <a href="privacy.html">Политикой конфиденциальности</a>
+                и
+                <a href="terms.html">Пользовательским соглашением</a>.
+              </p>
+            </form>
+          </div>
+
+          <div class="info-card info-card--steps">
+            <h2 class="section-card__title">Как это работает</h2>
+
+            <div class="steps-list mobile-carousel" data-carousel>
+              <div class="step-item">
+                <div class="step-item__num">1</div>
+                <div>
+                  <h3>Оставляете заявку</h3>
+                  <p>Заполните простую форму удобным способом.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-item__num">2</div>
+                <div>
+                  <h3>С вами связывается менеджер</h3>
+                  <p>Уточняем детали и отвечаем на вопросы.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-item__num">3</div>
+                <div>
+                  <h3>Получаете инструктаж</h3>
+                  <p>Рассказываем об условиях и формате работы.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-item__num">4</div>
+                <div>
+                  <h3>Начинаете работать</h3>
+                  <p>Выходите на смены и начинаете зарабатывать.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h2 class="section-card__title">Условия и бонусы</h2>
+            <ul class="benefits-list">
+              <li>Доход до 150 000 ₽</li>
+              <li>Еженедельные выплаты</li>
+              <li>Обучение и поддержка</li>
+              <li>Гибкий график</li>
+              <li>Работа в своем городе</li>
+              <li>Бонусы и мотивационные программы</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="advantages">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Преимущества</span>
+          <h2>Почему выбирают нас</h2>
+        </div>
+
+        <div class="cards-3 mobile-carousel" data-carousel>
+          <article class="feature-card">
+            <div class="feature-card__icon">⚡</div>
+            <h3>Быстрый старт</h3>
+            <p>После заявки вы быстро получите информацию о дальнейших шагах.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">🕒</div>
+            <h3>Свободный график</h3>
+            <p>Можно подобрать удобный формат занятости и совмещать с другими делами.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-card__icon">✔</div>
+            <h3>Прозрачные условия</h3>
+            <p>Понятный порядок работы, связи с менеджером и информирования.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="audience">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-head__eyebrow">Для кого</span>
+          <h2>Кому подойдет эта работа</h2>
+        </div>
+
+        <div class="cards-4 mobile-carousel" data-carousel>
+          <article class="soft-card">
+            <h3>Тем, кто ищет подработку</h3>
+            <p>Подходит как дополнительный источник дохода.</p>
+          </article>
+
+          <article class="soft-card">
+            <h3>Студентам</h3>
+            <p>Удобный вариант для тех, кому нужен гибкий график.</p>
+          </article>
+
+          <article class="soft-card">
+            <h3>Тем, кто хочет свободный ритм</h3>
+            <p>Можно подобрать удобный формат занятости.</p>
+          </article>
+
+          <article class="soft-card">
+            <h3>Тем, кто хочет быстро начать</h3>
+            <p>Понятный вход без сложной подготовки.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="faq">
+      <div class="container--narrow">
+        <div class="section-head section-head--center">
+          <span class="section-head__eyebrow">FAQ</span>
+          <h2>Часто задаваемые вопросы</h2>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item" open>
+            <summary>В каких городах доступна работа?</summary>
+            <p>Работа рассматривается по всей России. После заявки менеджер уточнит условия в вашем городе.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Какой доход можно получать?</summary>
+            <p>Доход зависит от занятости, графика и других рабочих факторов. Возможный доход — до 150 000 ₽.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Нужен ли опыт работы?</summary>
+            <p>Нет, опыт не обязателен. Перед началом предоставляется необходимая информация.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Можно ли совмещать с учебой или другой работой?</summary>
+            <p>Да, такой формат подходит тем, кому нужен гибкий график.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как быстро со мной свяжутся после заявки?</summary>
+            <p>После отправки заявки менеджер свяжется с вами и подскажет дальнейшие шаги.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Как выбрать удобный способ связи?</summary>
+            <p>В форме можно выбрать WhatsApp, Telegram или звонок. Менеджер свяжется с вами выбранным способом.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="logo">
+          <span class="logo__mark"></span>
+          <span class="logo__text">COURIER</span>
+        </a>
+        <p>Работа курьером по всей России.</p>
+      </div>
+
+      <div class="footer__col">
+        <h3>Документы</h3>
+        <a href="privacy.html">Политика конфиденциальности</a>
+        <a href="terms.html">Пользовательское соглашение</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Заявка</h3>
+        <a href="#form">Оставить заявку</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.querySelector(".burger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    if (burger && mobileMenu) {
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("is-active");
+        mobileMenu.classList.toggle("is-open");
+      });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          burger.classList.remove("is-active");
+          mobileMenu.classList.remove("is-open");
+        });
+      });
+    }
+
+    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+      let index = 0;
+      let timer;
+
+      const autoScroll = () => {
+        if (window.innerWidth > 720) return;
+
+        const cards = Array.from(carousel.children);
+        if (!cards.length) return;
+
+        index = (index + 1) % cards.length;
+
+        carousel.scrollTo({
+          left: cards[index].offsetLeft - carousel.offsetLeft,
+          behavior: "smooth"
+        });
+      };
+
+      const start = () => {
+        clearInterval(timer);
+        timer = setInterval(autoScroll, 3000);
+      };
+
+      const pause = () => {
+        clearInterval(timer);
+        timer = setInterval(autoScroll, 5000);
+      };
+
+      start();
+
+      carousel.addEventListener("touchstart", pause, { passive: true });
+      carousel.addEventListener("mousedown", pause);
+      window.addEventListener("resize", start);
+    });
+  </script>
+</body>
+</html>
