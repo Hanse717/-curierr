@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Работа курьером — до 150 000 ₽</title>
+  <meta name="description" content="Работа курьером по всей России. До 150 000 ₽ в месяц, гибкий график, быстрый старт." />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7f7;
+      color: #0f1720;
+    }
+
+    .container {
+      width: min(100% - 32px, 1100px);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 16px 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
+        url("hero-courier.png") center/cover no-repeat;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: #00e676;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-weight: bold;
+      display: inline-block;
+      color: #06351f;
+    }
+
+    /* BLOCKS */
+    .section {
+      padding: 60px 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+    }
+
+    /* FORM BLOCK */
+    .form-block {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-top: -60px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #03171a;
+      color: rgba(255,255,255,0.7);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer a {
+      color: white;
+      display: block;
+      margin: 6px 0;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .cards {
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+      }
+
+      .card {
+        min-width: 80%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <strong>COURIER</strong>
+    <a href="#form" class="btn">Оставить заявку</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Работа курьером</h1>
+    <p>До 150 000 ₽ в месяц. Гибкий график</p>
+    <a href="#form" class="btn">Хочу в команду</a>
+  </div>
+</section>
+
+<section class="container form-block" id="form">
+  <h2>Оставьте заявку</h2>
+
+  <input placeholder="Имя">
+  <input placeholder="Телефон">
+  <input placeholder="Город">
+
+  <select>
+    <option>Способ связи</option>
+    <option>WhatsApp</option>
+    <option>Telegram</option>
+  </select>
+
+  <button class="btn">Отправить</button>
+
+  <p style="font-size:12px;margin-top:10px;">
+    Нажимая кнопку, вы соглашаетесь с
+    <a href="privacy.html">политикой конфиденциальности</a> и
+    <a href="terms.html">пользовательским соглашением</a>
+  </p>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Почему мы</h2>
+
+    <div class="cards">
+      <div class="card">Быстрый старт</div>
+      <div class="card">Свободный график</div>
+      <div class="card">Доход до 150 000 ₽</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <a href="privacy.html">Политика конфиденциальности</a>
+    <a href="terms.html">Пользовательское соглашение</a>
+    © 2025
+  </div>
+</footer>
+
+</body>
+</html>
